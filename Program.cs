@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using GraphQL.Server.Ui.Voyager;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AppDbContext>(
+builder.Services.AddPooledDbContextFactory<AppDbContext>(
     opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CommandConStr")));
 builder.Services.AddGraphQLServer().AddQueryType<Query>();
 
