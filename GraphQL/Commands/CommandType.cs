@@ -14,9 +14,9 @@ public class CommandType : ObjectType<Command>
 
     private class Resolvers
     {
-        public IQueryable<Platform> GetPlatform(Command command, [ScopedService] AppDbContext context)
+        public Platform GetPlatform(Command command, [ScopedService] AppDbContext context)
         {
-            return context.Platforms.Where(platform => platform.Id == command.PlatformId);
+            return context.Platforms.FirstOrDefault(p => p.Id == command.PlatformId);
         }
     }
 }

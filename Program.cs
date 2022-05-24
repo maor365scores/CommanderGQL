@@ -13,7 +13,10 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(
 builder.Services.AddGraphQLServer()
        .AddQueryType<Query>()
        .AddType<PlatformType>()
-       .AddType<CommandType>();
+       .AddMutationType<Mutation>()
+       .AddType<CommandType>()
+       .AddFiltering()
+       .AddSorting();
 
 var app = builder.Build();
 
